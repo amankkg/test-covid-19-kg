@@ -1,0 +1,9 @@
+.country-select {
+  border: none;
+  min-width: 360px;
+  background: white;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 16px;
+}
