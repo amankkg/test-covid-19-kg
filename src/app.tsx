@@ -1,19 +1,31 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useMemo} from 'react'
 
 import {useAppSelector, useAppDispatch} from './store'
 import {thunks} from './slice'
 
 export const App = () => {
+  const dispatch = useAppDispatch()
+
   const selectedCountry = useAppSelector((store) => store.country)
   const countries = useAppSelector((store) => store.countries)
+  const statistics = useAppSelector((store) => store.statistics)
   const loading = useAppSelector((store) => store.pendingCount > 0)
-  const dispatch = useAppDispatch()
+
+  const recentStatistics = useMemo(() => statistics.slice(-5).reverse(), [
+    statistics,
+  ])
 
   useEffect(() => {
     dispatch(thunks.fetchCountries())
     dispatch(thunks.restoreSelectedCountry())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    if (!selectedCountry) return
+
+    dispatch(thunks.fetchStatistics(selectedCountry))
+  }, [selectedCountry, dispatch])
 
   if (loading) return <h1>loading...</h1>
 
@@ -34,6 +46,18 @@ export const App = () => {
           </option>
         ))}
       </select>
+
+      <ul>
+        {recentStatistics.map((entry) => (
+          <li key={selectedCountry + ':' + entry.date}>
+            <p>{new Date(entry.date).toLocaleDateString()}</p>
+            <p>Active {entry.active}</p>
+            <p>confirmed {entry.confirmed}</p>
+            <p>Deaths {entry.deaths}</p>
+            <p>Recovered {entry.recovered}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

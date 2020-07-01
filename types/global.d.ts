@@ -3,3 +3,11 @@ declare interface Country {
   slug: string
   iso2: string
 }
+
+declare interface StatisticsEntry {
+  confirmed: number
+  deaths: number
+  recovered: number
+  active: number
+  date: Date
+}
