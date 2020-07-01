@@ -28,6 +28,8 @@ const fetchCountries = createAsyncThunk('fetchCountries', async () => {
     iso2: country.ISO2,
   }))
 
+  countries.sort((a, b) => a.country.localeCompare(b.country))
+
   await storage.write('countries', countries)
 
   return countries
