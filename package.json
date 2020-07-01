@@ -1,24 +1,82 @@
 {
+  "name": "test-covid-19-kg",
+  "private": "true",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
     "test": "jest",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
+    "lint": "eslint src types",
+    "deploy": "vercel --prod"
+  },
+  "snowpack": {
+    "extends": "@snowpack/app-scripts-react",
+    "plugins": [
+      "@snowpack/plugin-webpack"
+    ],
+    "scripts": {
+      "bundle:*": "@snowpack/plugin-webpack"
+    }
   },
   "dependencies": {
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
-  },
-  "devDependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "@snowpack/app-scripts-react": "^1.4.0",
+    "@snowpack/plugin-webpack": "^1.4.0",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.3",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
     "jest": "^25.4.0",
-    "prettier": "^2.0.0",
+    "parcel": "^2.0.0-beta.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-redux": "^7.2.0",
     "snowpack": "^2.5.0",
-    "typescript": "^3.8.0"
+    "typescript": "^3.8.0",
+    "vercel": "^19.1.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.5",
+    "eslint-plugin-unicorn": "^20.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "plugin:react-hooks/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:unicorn/recommended",
+      "plugin:prettier/recommended",
+      "prettier/@typescript-eslint",
+      "prettier/react",
+      "prettier/unicorn"
+    ]
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts?(x)": "eslint --cache --fix"
   }
 }
