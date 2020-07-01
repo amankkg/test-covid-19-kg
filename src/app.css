@@ -21,7 +21,7 @@
   border-radius: 5px;
 }
 
-.statistics {
+.statistics > li {
   background: white;
   border-radius: 5px;
 }
