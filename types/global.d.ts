@@ -9,5 +9,5 @@ declare interface StatisticsEntry {
   deaths: number
   recovered: number
   active: number
-  date: Date
+  date: number
 }

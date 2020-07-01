@@ -2,6 +2,7 @@ import React, {useEffect, useMemo} from 'react'
 
 import {useAppSelector, useAppDispatch} from './store'
 import {thunks} from './slice'
+import {findPeakRecover} from './services'
 
 export const App = () => {
   const dispatch = useAppDispatch()
@@ -14,6 +15,11 @@ export const App = () => {
   const recentStatistics = useMemo(() => statistics.slice(-5).reverse(), [
     statistics,
   ])
+
+  const [peakDate, peakRecover] = useMemo(
+    () => (statistics.length > 0 ? findPeakRecover(statistics) : []),
+    [statistics],
+  )
 
   useEffect(() => {
     dispatch(thunks.fetchCountries())
@@ -46,6 +52,14 @@ export const App = () => {
           </option>
         ))}
       </select>
+
+      {peakRecover !== undefined && peakDate !== undefined && (
+        <p>
+          Top recovered cases: {peakRecover} at {peakDate.toLocaleDateString()}
+        </p>
+      )}
+
+      {statistics.length === 0 && <h2>no data</h2>}
 
       <ul>
         {recentStatistics.map((entry) => (
