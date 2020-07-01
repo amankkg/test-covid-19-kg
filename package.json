@@ -5,17 +5,9 @@
     "start": "snowpack dev",
     "build": "snowpack build",
     "test": "jest",
-    "lint": "eslint src types",
-    "deploy": "vercel --prod"
-  },
-  "snowpack": {
-    "extends": "@snowpack/app-scripts-react",
-    "plugins": [
-      "@snowpack/plugin-webpack"
-    ],
-    "scripts": {
-      "bundle:*": "@snowpack/plugin-webpack"
-    }
+    "deploy": "vercel --prod",
+    "eslint": "eslint src types",
+    "stylelint": "stylelint src/**/*.css"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
@@ -51,7 +43,29 @@
     "eslint-plugin-unicorn": "^20.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-prettier": "^1.1.2"
+  },
+  "snowpack": {
+    "extends": "@snowpack/app-scripts-react",
+    "plugins": [
+      "@snowpack/plugin-webpack"
+    ],
+    "scripts": {
+      "bundle:*": "@snowpack/plugin-webpack"
+    }
+  },
+  "babel": {
+    "extends": "@snowpack/app-scripts-react/babel.config.json"
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
   },
   "eslintConfig": {
     "extends": [
@@ -65,11 +79,11 @@
       "prettier/unicorn"
     ]
   },
-  "prettier": {
-    "bracketSpacing": false,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all"
+  "stylelint": {
+    "extends": [
+      "stylelint-config-recommended",
+      "stylelint-prettier/recommended"
+    ]
   },
   "husky": {
     "hooks": {
@@ -77,6 +91,7 @@
     }
   },
   "lint-staged": {
-    "*.ts?(x)": "eslint --cache --fix"
+    "*.ts?(x)": "eslint --cache --fix",
+    "*.css": "stylelint --fix"
   }
 }
