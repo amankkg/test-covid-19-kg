@@ -1,0 +1,39 @@
+.peak {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  min-width: 380px;
+  min-height: 450px;
+  background: #1bbc9b;
+  border-radius: 5px;
+}
+
+.peak > * {
+  min-width: 280px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.peak > .label {
+  font-size: 28px;
+  padding-top: 40px;
+}
+
+.peak > .number {
+  font-weight: bold;
+  font-size: 100px;
+}
+.peak > .date {
+  border-top: solid rgba(255, 255, 255, 0.3) 2px;
+  padding: 20px;
+  font-size: 22px;
+}
+
+.statistics > li {
+  min-width: 800px;
+  min-height: 145px;
+  background: white;
+  border-radius: 5px;
+}
