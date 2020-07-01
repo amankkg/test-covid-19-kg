@@ -1,8 +1,8 @@
 import React, {useEffect, useMemo} from 'react'
 
+import * as core from './core'
 import {useAppSelector, useAppDispatch} from './store'
-import {thunks} from './slice'
-import {findPeakRecover} from './services'
+import * as thunks from './thunks'
 
 export const App = () => {
   const dispatch = useAppDispatch()
@@ -12,12 +12,12 @@ export const App = () => {
   const statistics = useAppSelector((store) => store.statistics)
   const loading = useAppSelector((store) => store.pendingCount > 0)
 
-  const recentStatistics = useMemo(() => statistics.slice(-5).reverse(), [
+  const recentStatistics = useMemo(() => core.getRecentStatistics(statistics), [
     statistics,
   ])
 
   const [peakDate, peakRecover] = useMemo(
-    () => (statistics.length > 0 ? findPeakRecover(statistics) : []),
+    () => (statistics.length > 0 ? core.findPeakRecover(statistics) : []),
     [statistics],
   )
 
