@@ -13,6 +13,26 @@ ul {
   margin: 0;
 }
 
+.thumbnail {
+  position: absolute;
+  opacity: 1;
+  z-index: 1;
+  background: #1bbc9b;
+  height: 100vh;
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: all 0.66s;
+}
+
+.thumbnail-off {
+  opacity: 0;
+  z-index: -1;
+}
+
 .app {
   height: 100vh;
   width: 100vw;
@@ -39,6 +59,10 @@ ul {
 }
 
 @media (min-width: 768px) {
+  .app > * {
+    margin-left: 20px;
+  }
+
   .app-stats {
     flex-direction: row;
     justify-content: flex-start;
@@ -46,7 +70,7 @@ ul {
 }
 
 @media (min-width: 1280px) {
-  .app {
-    padding-left: 140px;
+  .app > * {
+    margin-left: 140px;
   }
 }

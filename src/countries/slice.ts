@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
-import {fetchApi, storage} from 'src/services'
+import {fetchApi, storage} from '../services'
 
 const initialState = {
   list: [] as Country[],

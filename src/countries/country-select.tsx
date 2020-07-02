@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {useAppSelector, useAppDispatch} from 'src/store'
+import {useAppSelector, useAppDispatch} from '../store'
 
 import {selectCountry} from './slice'
 

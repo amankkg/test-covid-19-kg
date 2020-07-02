@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react'
 
-import {useAppSelector} from 'src/store'
+import {useAppSelector} from '../store'
 
 import {findPeakRecover} from './core'
 

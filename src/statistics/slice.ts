@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
-import {fetchApi, storage} from 'src/services'
+import {fetchApi, storage} from '../services'
 
 const initialState = {
   data: [] as StatisticsEntry[],
