@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 
 import {useAppSelector, useAppDispatch} from './store'
 import {CountrySelect, fetchCountries, selectCountry} from './countries'
-import {Peak, RecentStatistics, fetchStatistics} from './statistics'
+import {PeakRecovered, RecentStats, fetchStatistics} from './statistics'
 
 export const App = () => {
   const dispatch = useAppDispatch()
@@ -20,8 +20,10 @@ export const App = () => {
   return (
     <div className="app">
       <CountrySelect />
-      <Peak />
-      <RecentStatistics />
+      <div className="app-stats">
+        <RecentStats />
+        <PeakRecovered />
+      </div>
     </div>
   )
 }

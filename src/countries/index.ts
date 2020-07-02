@@ -1,4 +1,4 @@
-import './countries.css'
+import './index.css'
 
 export * from './slice'
-export {CountrySelect} from './select'
+export {CountrySelect} from './country-select'

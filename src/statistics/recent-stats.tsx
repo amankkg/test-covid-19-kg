@@ -3,8 +3,9 @@ import React, {useMemo} from 'react'
 import {useAppSelector} from 'src/store'
 
 import {getRecentStatistics} from './core'
+import {StatsEntry} from './stats-entry'
 
-export const RecentStatistics = () => {
+export const RecentStats = () => {
   const state = useAppSelector((state) => ({
     ...state.statistics,
     country: state.countries.selected,
@@ -17,15 +18,11 @@ export const RecentStatistics = () => {
   if (state.pending) return <p>loading...</p>
 
   return (
-    <ul className="statistics">
+    <ul className="stats">
       {state.data.length === 0 && <h2>no data</h2>}
       {recentStatistics.map((entry) => (
         <li key={state.country + ':' + entry.date}>
-          <p>{new Date(entry.date).toLocaleDateString()}</p>
-          <p>Active {entry.active}</p>
-          <p>Confirmed {entry.confirmed}</p>
-          <p>Deaths {entry.deaths}</p>
-          <p>Recovered {entry.recovered}</p>
+          <StatsEntry {...entry} />
         </li>
       ))}
     </ul>

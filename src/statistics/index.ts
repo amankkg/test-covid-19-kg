@@ -1,5 +1,5 @@
-import './statistics.css'
+import './index.css'
 
 export * from './slice'
-export {Peak} from './peak'
-export {RecentStatistics} from './recent'
+export {PeakRecovered} from './peak-recovered'
+export {RecentStats} from './recent-stats'

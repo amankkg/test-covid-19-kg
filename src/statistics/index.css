@@ -1,0 +1,84 @@
+.peak {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  min-width: 375px;
+  min-height: 450px;
+  background: #1bbc9b;
+  border-radius: 5px;
+}
+
+.peak > * {
+  min-width: 280px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.peak > .label {
+  font-size: 28px;
+  padding-top: 40px;
+}
+
+.peak > .number {
+  font-weight: bold;
+  font-size: 100px;
+}
+
+.peak > .date {
+  border-top: solid rgba(255, 255, 255, 0.3) 2px;
+  padding: 20px;
+  font-size: 22px;
+}
+
+.stats > li {
+  min-width: 375px;
+  min-height: 145px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  background: white;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .stats > li {
+    max-width: 800px;
+    width: 100%;
+  }
+}
+
+.stats > li:first-child {
+  margin-top: 0;
+}
+
+.stats-date {
+  padding-left: 50px;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.stats-data {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-end;
+}
+
+.stats-data > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-right: 30px;
+  min-width: 30%;
+  font-size: 18px;
+}
+
+.stats-data > div > span:last-child {
+  padding: 10px;
+  background: #edf7ff;
+  border-radius: 5px;
+  font-weight: bold;
+}

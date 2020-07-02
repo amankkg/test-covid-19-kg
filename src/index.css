@@ -9,6 +9,8 @@ body {
 
 ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .app {
@@ -17,7 +19,34 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   background: #edf7ff;
-  padding: 2rem;
+}
+
+.app > * {
+  margin-top: 40px;
+}
+
+.app-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.app-stats > *:first-child {
+  margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .app-stats {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1280px) {
+  .app {
+    padding-left: 140px;
+  }
 }
